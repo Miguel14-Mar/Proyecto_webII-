@@ -1,0 +1,82 @@
+
+De esta forma se creo las base de datos usada en esta api
+
+REATE DATABASE dc_heroes;
+USE dc_heroes;
+CREATE TABLE heroes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    alias VARCHAR(100),
+    primera_aparicion DATE,
+    estado VARCHAR(50)
+);
+
+CREATE TABLE powers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE hero_powers (
+    hero_id INT,
+    power_id INT,
+    PRIMARY KEY (hero_id, power_id),
+    FOREIGN KEY (hero_id) REFERENCES heroes(id) ON DELETE CASCADE,
+    FOREIGN KEY (power_id) REFERENCES powers(id) ON DELETE CASCADE
+);
+
+CREATE TABLE teams (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE hero_teams (
+    hero_id INT,
+    team_id INT,
+    PRIMARY KEY (hero_id, team_id),
+    FOREIGN KEY (hero_id) REFERENCES heroes(id) ON DELETE CASCADE,
+    FOREIGN KEY (team_id) REFERENCES teams(id) ON DELETE CASCADE
+);
+
+INSERT INTO teams (nombre) VALUES ('Liga de la Justicia');
+INSERT INTO teams (nombre) VALUES ('Jóvenes Titanes');
+INSERT INTO teams (nombre) VALUES ('Escuadrón Suicida');
+INSERT INTO teams (nombre) VALUES ('Sociedad de la Justicia de América');
+INSERT INTO teams (nombre) VALUES ('Linternas Verdes');
+
+INSERT INTO powers (nombre) VALUES ('Super fuerza');
+INSERT INTO powers (nombre) VALUES ('Vuelo');
+INSERT INTO powers (nombre) VALUES ('Invisibilidad');
+INSERT INTO powers (nombre) VALUES ('Velocidad sobrehumana');
+INSERT INTO powers (nombre) VALUES ('Intelecto superior');
+INSERT INTO powers (nombre) VALUES ('Control mental');
+INSERT INTO powers (nombre) VALUES ('Inmortalidad');
+INSERT INTO powers (nombre) VALUES ('Teletransportación');
+
+INSERT INTO heroes (nombre, alias, primera_aparicion, estado) VALUES ('Clark Kent', 'Superman', '1938-06-01', 'Activo');
+INSERT INTO heroes (nombre, alias, primera_aparicion, estado) VALUES ('Bruce Wayne', 'Batman', '1939-05-01', 'Activo');
+INSERT INTO heroes (nombre, alias, primera_aparicion, estado) VALUES ('Diana Prince', 'Wonder Woman', '1941-12-01', 'Activo');
+INSERT INTO heroes (nombre, alias, primera_aparicion, estado) VALUES ('Barry Allen', 'The Flash', '1956-10-01', 'Activo');
+INSERT INTO heroes (nombre, alias, primera_aparicion, estado) VALUES ('Arthur Curry', 'Aquaman', '1941-11-01', 'Activo');
+INSERT INTO heroes (nombre, alias, primera_aparicion, estado) VALUES ('Hal Jordan', 'Green Lantern', '1959-10-01', 'Activo');
+INSERT INTO heroes (nombre, alias, primera_aparicion, estado) VALUES ('John Constantine', 'Constantine', '1985-06-01', 'Activo');
+INSERT INTO heroes (nombre, alias, primera_aparicion, estado) VALUES ('Billy Batson', 'Shazam', '1940-02-01', 'Activo');
+
+INSERT INTO hero_powers (hero_id, power_id) VALUES (1, 1);  -- Superman con Super fuerza
+INSERT INTO hero_powers (hero_id, power_id) VALUES (1, 2);  -- Superman con Vuelo
+INSERT INTO hero_powers (hero_id, power_id) VALUES (2, 5);  -- Batman con Intelecto superior
+INSERT INTO hero_powers (hero_id, power_id) VALUES (3, 1);  -- Wonder Woman con Super fuerza
+INSERT INTO hero_powers (hero_id, power_id) VALUES (3, 2);  -- Wonder Woman con Vuelo
+INSERT INTO hero_powers (hero_id, power_id) VALUES (4, 4);  -- The Flash con Velocidad sobrehumana
+INSERT INTO hero_powers (hero_id, power_id) VALUES (5, 1);  -- Aquaman con Super fuerza
+INSERT INTO hero_powers (hero_id, power_id) VALUES (6, 2);  -- Green Lantern con Vuelo
+INSERT INTO hero_powers (hero_id, power_id) VALUES (6, 7);  -- Green Lantern con Inmortalidad
+INSERT INTO hero_powers (hero_id, power_id) VALUES (7, 8);  -- Constantine con Teletransportación
+
+INSERT INTO hero_teams (hero_id, team_id) VALUES (1, 1);  -- Superman en Liga de la Justicia
+INSERT INTO hero_teams (hero_id, team_id) VALUES (2, 1);  -- Batman en Liga de la Justicia
+INSERT INTO hero_teams (hero_id, team_id) VALUES (3, 1);  -- Wonder Woman en Liga de la Justicia
+INSERT INTO hero_teams (hero_id, team_id) VALUES (4, 1);  -- The Flash en Liga de la Justicia
+INSERT INTO hero_teams (hero_id, team_id) VALUES (5, 1);  -- Aquaman en Liga de la Justicia
+INSERT INTO hero_teams (hero_id, team_id) VALUES (6, 5);  -- Green Lantern en Linternas Verdes
+INSERT INTO hero_teams (hero_id, team_id) VALUES (7, 4);  -- Constantine en Sociedad de la Justicia de América
+INSERT INTO hero_teams (hero_id, team_id) VALUES (8, 1);  -- Shazam en Liga de la Justicia
