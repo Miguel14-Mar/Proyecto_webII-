@@ -9,11 +9,14 @@ CREATE TABLE heroes (
     alias VARCHAR(100),
     primera_aparicion DATE,
     estado VARCHAR(50)
+    descripcion TEXT,
+    imagen TEXT 
 );
 
 CREATE TABLE powers (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL
+    caracteristicas TEXT  
 );
 
 CREATE TABLE hero_powers (
@@ -26,7 +29,9 @@ CREATE TABLE hero_powers (
 
 CREATE TABLE teams (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL
+    nombre VARCHAR(100) NOT NULL,
+    descripcion TEXT,
+    imagen TEXT 
 );
 
 CREATE TABLE hero_teams (
@@ -37,29 +42,73 @@ CREATE TABLE hero_teams (
     FOREIGN KEY (team_id) REFERENCES teams(id) ON DELETE CASCADE
 );
 
-INSERT INTO teams (nombre) VALUES ('Liga de la Justicia');
-INSERT INTO teams (nombre) VALUES ('Jóvenes Titanes');
-INSERT INTO teams (nombre) VALUES ('Escuadrón Suicida');
-INSERT INTO teams (nombre) VALUES ('Sociedad de la Justicia de América');
-INSERT INTO teams (nombre) VALUES ('Linternas Verdes');
 
-INSERT INTO powers (nombre) VALUES ('Super fuerza');
-INSERT INTO powers (nombre) VALUES ('Vuelo');
-INSERT INTO powers (nombre) VALUES ('Invisibilidad');
-INSERT INTO powers (nombre) VALUES ('Velocidad sobrehumana');
-INSERT INTO powers (nombre) VALUES ('Intelecto superior');
-INSERT INTO powers (nombre) VALUES ('Control mental');
-INSERT INTO powers (nombre) VALUES ('Inmortalidad');
-INSERT INTO powers (nombre) VALUES ('Teletransportación');
+-- Insertar equipos con descripciones, imagen y características
+INSERT INTO teams (nombre, descripcion, imagen) VALUES
+('Liga de la Justicia', 
+ 'La Liga de la Justicia es una alianza de los más grandes héroes del planeta, formada para hacer frente a amenazas cósmicas y terrestres que ningún individuo podría enfrentar solo. Esta organización está comprometida con la defensa del bienestar de la humanidad, protegiendo la Tierra de invasiones alienígenas, criminales interdimensionales y otros villanos que amenazan la paz global. Unidos por su sentido de justicia y sacrificio, los miembros de la Liga actúan como la primera línea de defensa de la Tierra.',
+ 'imagenes/Justiceleague.jpg'),
+ 
+('Jóvenes Titanes', 
+ 'Los Jóvenes Titanes son un grupo de adolescentes con habilidades extraordinarias, que luchan por la justicia mientras navegan por los desafíos de la adolescencia. Aunque son jóvenes, su valentía y fuerza superan las expectativas. Este equipo funciona como un refugio para héroes jóvenes que buscan un propósito, aprendiendo y creciendo tanto en sus habilidades como en sus relaciones personales. A menudo se enfrentan a amenazas que son demasiado grandes para ellos, pero su espíritu de equipo y su lealtad les permiten triunfar.',
+ 'imagenes/Titanes.jpg'),
+ 
+('Escuadrón Suicida', 
+ 'El Escuadrón Suicida es un grupo de villanos y antihéroes reclutados por el gobierno de los Estados Unidos para realizar misiones peligrosas y de alto riesgo que ningún héroe podría llevar a cabo. Como parte de un acuerdo con el gobierno, estos criminales tienen la oportunidad de reducir sus condenas si sobreviven a las misiones. Conformado por individuos con poderes extraordinarios, pero también con un código moral roto, el Escuadrón Suicida se enfrenta a misiones casi suicidas, sin saber si volverán con vida.',
+ 'imagenes/Escuadronsuicida.jpg'),
+ 
+('Sociedad de la Justicia de América', 
+ 'La Sociedad de la Justicia de América (JSA) es uno de los equipos más antiguos y venerados del universo DC. Compuesto por héroes de generaciones pasadas, la JSA fue la primera en luchar por la justicia en una época donde los villanos y las amenazas eran más comunes. Aunque muchos de sus miembros son figuras legendarias y antiguos luchadores, siguen siendo un símbolo de esperanza y resistencia. Su misión es proteger el mundo de amenazas globales y cósmicas, enseñando a las generaciones más jóvenes el valor del sacrificio y el honor.',
+ 'imagenes/Justicesociety.jpg'),
 
-INSERT INTO heroes (nombre, alias, primera_aparicion, estado) VALUES ('Clark Kent', 'Superman', '1938-06-01', 'Activo');
-INSERT INTO heroes (nombre, alias, primera_aparicion, estado) VALUES ('Bruce Wayne', 'Batman', '1939-05-01', 'Activo');
-INSERT INTO heroes (nombre, alias, primera_aparicion, estado) VALUES ('Diana Prince', 'Wonder Woman', '1941-12-01', 'Activo');
-INSERT INTO heroes (nombre, alias, primera_aparicion, estado) VALUES ('Barry Allen', 'The Flash', '1956-10-01', 'Activo');
-INSERT INTO heroes (nombre, alias, primera_aparicion, estado) VALUES ('Arthur Curry', 'Aquaman', '1941-11-01', 'Activo');
-INSERT INTO heroes (nombre, alias, primera_aparicion, estado) VALUES ('Hal Jordan', 'Green Lantern', '1959-10-01', 'Activo');
-INSERT INTO heroes (nombre, alias, primera_aparicion, estado) VALUES ('John Constantine', 'Constantine', '1985-06-01', 'Activo');
-INSERT INTO heroes (nombre, alias, primera_aparicion, estado) VALUES ('Billy Batson', 'Shazam', '1940-02-01', 'Activo');
+('Linternas Verdes', 
+ 'Los Linternas Verdes son un cuerpo intergaláctico de guerreros dedicados a proteger el universo. Cada miembro porta un anillo de poder que les otorga habilidades sobrehumanas, basado en la fuerza de su voluntad. Esta organización no está limitada a un solo planeta, sino que cubre todo el cosmos, enfrentándose a amenazas cósmicas y a villanos que buscan destruir la paz en el universo. Los Linternas Verdes siguen un estricto código moral, y su deber es mantener el orden y la justicia en cada rincón del universo, enfrentándose a la oscuridad con la luz de su voluntad.',
+ 'imagenes/Linternasverdes.jpg');
+
+
+-- Insertar poderes con  características
+INSERT INTO powers (nombre,caracteristicas) VALUES
+('Super fuerza', 'Habilidad para levantar, mover y destruir objetos a una fuerza sobrehumana. Generalmente asociada con la musculatura y la fuerza física extraordinaria.'),
+
+('Vuelo','Capacidad de volar a través del aire o en el espacio sin el uso de vehículos, generalmente gracias a habilidades sobrenaturales o tecnológicas.'),
+
+('Invisibilidad','Habilidad de volverse invisible a la vista, ocultándose de cualquier observador o cámara. Utilizada como un poder de sigilo y evasión.'),
+
+('Velocidad sobrehumana', 'Habilidad para moverse y reaccionar a velocidades mucho más altas que un ser humano normal. Utilizada para realizar movimientos rápidos y cubrir grandes distancias en segundos.'),
+
+('Intelecto superior', 'Capacidad mental avanzada que permite a la persona procesar información a una velocidad extremadamente rápida, resolviendo problemas complejos con facilidad.'),
+
+('Control mental','Capacidad de controlar las mentes de otras personas, ya sea para influir en sus pensamientos, emociones o acciones. A menudo se usa para manipular a otros.'),
+
+('Inmortalidad', 'La habilidad de vivir indefinidamente, sin envejecer o morir. Generalmente vinculada con seres poderosos o entidades sobrenaturales.'),
+
+('Teletransportación','Habilidad para transportarse instantáneamente de un lugar a otro sin necesidad de viajar físicamente. Puede ser en cualquier parte del universo o incluso dimensiones diferentes.');
+
+-- Insertar héroes con descripciones, imagen y características
+INSERT INTO heroes (nombre, alias, primera_aparicion, estado, descripcion, imagen) VALUES
+('Clark Kent', 'Superman', '1938-06-01', 'Activo', 
+ 'Superman es el último hijo de Krypton, dotado de poderes sobrehumanos que lo convierten en el héroe más poderoso del planeta. Su misión es proteger la Tierra de cualquier amenaza, sin importar su origen, desde invasiones alienígenas hasta criminales terribles. Aunque tiene un corazón compasivo, sus responsabilidades lo obligan a tomar decisiones difíciles.',
+'imagenes/Superman.png'),
+ 
+('Bruce Wayne', 'Batman', '1939-05-01', 'Activo', 
+ 'Batman, el Caballero Oscuro, es un vigilante que combate el crimen en Gotham City. A diferencia de otros héroes, Batman no posee poderes sobrenaturales, pero su increíble intelecto, habilidades físicas y recursos ilimitados lo convierten en uno de los más grandes luchadores contra el crimen. Su lucha personal contra la injusticia nace de la tragedia de su infancia, cuando presenció el asesinato de sus padres.',
+ 'imagenes/Batman.jpg'),
+ 
+('Diana Prince', 'Wonder Woman', '1941-12-01', 'Activo', 
+ 'Wonder Woman, la Princesa Amazona, es una guerrera con una fuerza sobrehumana y una habilidad única para luchar por la justicia. Criada en la isla de Themyscira, fue enviada al mundo exterior para ser una embajadora de paz y luchar por los derechos de los oprimidos. Su fuerza, habilidad en combate y artefactos mágicos la convierten en una heroína formidable.',
+ 'imagenes/Mujermaravilla.jpg'),
+ 
+('Barry Allen', 'The Flash', '1956-10-01', 'Activo', 
+ 'Barry Allen es el hombre más rápido del mundo. Como The Flash, tiene la capacidad de moverse a velocidades increíbles, lo que le permite no solo recorrer grandes distancias en segundos, sino también manipular el tiempo y el espacio. Su responsabilidad como protector de Central City lo lleva a enfrentarse a numerosos villanos y situaciones extremas.',
+ 'imagenes/Theflash.jpg'),
+ 
+('Arthur Curry', 'Aquaman', '1941-11-01', 'Activo', 
+ 'Aquaman, el Rey de la Atlántida, posee la capacidad de comunicarse con la vida marina y de controlar el agua. Con una conexión profunda con los océanos, defiende no solo la Tierra, sino también el reino submarino de Atlantis. Su lucha por equilibrar su vida como rey y como héroe lo lleva a enfrentar amenazas tanto en la superficie como en las profundidades del océano.',
+ 'imagenes/Aquaman.jpg'),
+ 
+('Hal Jordan', 'Green Lantern', '1959-10-01', 'Activo', 
+ 'Hal Jordan es un piloto de pruebas que se convierte en uno de los Linternas Verdes, un grupo intergaláctico de guerreros cuyo poder proviene de anillos capaces de crear estructuras de energía a partir de la fuerza de la voluntad. Como Green Lantern, Hal se enfrenta a amenazas cósmicas mientras sigue un código moral estricto, protegiendo tanto la Tierra como el universo.',
+ 'imagenes/Linternasverdes.jpg');
 
 INSERT INTO hero_powers (hero_id, power_id) VALUES (1, 1);  -- Superman con Super fuerza
 INSERT INTO hero_powers (hero_id, power_id) VALUES (1, 2);  -- Superman con Vuelo
@@ -70,7 +119,7 @@ INSERT INTO hero_powers (hero_id, power_id) VALUES (4, 4);  -- The Flash con Vel
 INSERT INTO hero_powers (hero_id, power_id) VALUES (5, 1);  -- Aquaman con Super fuerza
 INSERT INTO hero_powers (hero_id, power_id) VALUES (6, 2);  -- Green Lantern con Vuelo
 INSERT INTO hero_powers (hero_id, power_id) VALUES (6, 7);  -- Green Lantern con Inmortalidad
-INSERT INTO hero_powers (hero_id, power_id) VALUES (7, 8);  -- Constantine con Teletransportación
+
 
 INSERT INTO hero_teams (hero_id, team_id) VALUES (1, 1);  -- Superman en Liga de la Justicia
 INSERT INTO hero_teams (hero_id, team_id) VALUES (2, 1);  -- Batman en Liga de la Justicia
@@ -78,5 +127,5 @@ INSERT INTO hero_teams (hero_id, team_id) VALUES (3, 1);  -- Wonder Woman en Lig
 INSERT INTO hero_teams (hero_id, team_id) VALUES (4, 1);  -- The Flash en Liga de la Justicia
 INSERT INTO hero_teams (hero_id, team_id) VALUES (5, 1);  -- Aquaman en Liga de la Justicia
 INSERT INTO hero_teams (hero_id, team_id) VALUES (6, 5);  -- Green Lantern en Linternas Verdes
-INSERT INTO hero_teams (hero_id, team_id) VALUES (7, 4);  -- Constantine en Sociedad de la Justicia de América
-INSERT INTO hero_teams (hero_id, team_id) VALUES (8, 1);  -- Shazam en Liga de la Justicia
+
+

@@ -1,0 +1,143 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+nav button {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+nav button:hover {
+    background-color: #777;
+}
+
+#content {
+    padding: 20px;
+    text-align: center;
+}
+
+/*.hero-card, .team-card, .power-card {
+    background-color: #fff;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+/* Efecto al pasar el ratón sobre las tarjetas */
+.hero-card:hover, .team-card:hover, .power-card:hover {
+    transform: translateY(-10px);  /* Eleva la tarjeta al hacer hover */
+}
+
+/* Estilo para las imágenes de los héroes */
+.hero-image {
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
+    border-radius: 8px;
+    float: left;  /* Las imágenes flotan a la izquierda */
+    margin-bottom: 10px;  /* Espacio en la parte inferior de la imagen */
+}
+
+/* Estilo para los títulos dentro de las tarjetas */
+h3 {
+    font-size: 1.5em;
+    margin: 0 0 10px 0;  /* Margen en la parte inferior */
+}
+
+/* Estilo para los párrafos dentro de las tarjetas */
+p {
+    font-size: 1em;
+    color: #555;  /* Color de texto gris oscuro */
+    margin: 5px 0;  /* Espaciado entre los párrafos */
+}
+
+/* Estilos para la descripción del héroe */
+.hero-card {
+    background-color: #eaf2f8;  /* Fondo azul suave para héroes */
+}
+
+.hero-card h3 {
+    color: #2980b9;  /* Título azul */
+}
+
+.hero-card .hero-image {
+    border: 3px solid #2980b9;  /* Borde azul alrededor de la imagen */
+}
+
+/* Estilo para las imágenes de los héroes */
+.team-image {
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
+    border-radius: 8px;
+    float: left;  /* Las imágenes flotan a la izquierda */
+    margin-bottom: 10px;  /* Espacio en la parte inferior de la imagen */
+}
+
+/* Estilos para los equipos */
+.team-card {
+    background-color: #f9f9f9;  /* Fondo gris claro */
+}
+
+.team-card h3 {
+    color: #27ae60;  /* Título verde */
+}
+
+.team-card p {
+    font-size: 1em;
+    color: #2c3e50;  /* Color de texto gris oscuro */
+}
+
+/* Estilos para los poderes */
+.power-card {
+    background-color: #f4e1d2;  /* Fondo suave color durazno */
+}
+
+.power-card h3 {
+    color: #8e44ad;  /* Título morado */
+}
+
+.power-card p {
+    font-size: 1em;
+    color: #2c3e50;  /* Texto en gris oscuro */
+}
+
+/* Diseño responsivo para pantallas pequeñas */
+@media (max-width: 768px) {
+    #content {
+        flex-direction: column;
+        align-items: center;  /* Alinea las tarjetas al centro */
+    }
+
+    .hero-card, .team-card, .power-card {
+        width: 90%;  /* Ajusta el ancho de las tarjetas a 90% en pantallas pequeñas */
+    }
+}
+
+/* Diseño responsivo para pantallas móviles */
+@media (max-width: 480px) {
+    h3 {
+        font-size: 1.3em;  /* Ajusta el tamaño de los títulos */
+    }
+
+    p {
+        font-size: 0.9em;  /* Ajusta el tamaño de los párrafos */
+    }
+}

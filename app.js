@@ -1,9 +1,10 @@
 const express = require('express');
+const path = require('path')
 const connection = require('./bd');
 const app = express();
 const PORT = 3000;
 
-app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Ruta para obtener todos los héroes
 app.get('/heroes', (req, res) => {
@@ -72,6 +73,11 @@ app.get('/powers/:id', (req, res) => {
         }
         res.json(results[0]);
     });
+});
+
+// Ruta por defecto para devolver el HTML cuando no se haga ninguna solicitud API
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 
