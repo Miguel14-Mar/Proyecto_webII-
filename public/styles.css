@@ -5,6 +5,37 @@ body {
     padding: 0;
 }
 
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo img {
+    height: 40px;
+}
+
+.navbar .nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar .nav-links li {
+    margin: 0 10px;
+}
+
+.navbar .nav-links a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+
 header {
     background-color: #333;
     color: #fff;
@@ -31,18 +62,29 @@ nav button:hover {
     text-align: center;
 }
 
-/*.hero-card, .team-card, .power-card {
+#content-doc {
+    padding: 20px;
+    text-align: left;
+}
+
+.hero-card, .team-card {
     background-color: #fff;
     padding: 15px;
     margin: 10px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: left;
+    display: inline-block; 
 }
 
-/* Efecto al pasar el ratón sobre las tarjetas */
-.hero-card:hover, .team-card:hover, .power-card:hover {
-    transform: translateY(-10px);  /* Eleva la tarjeta al hacer hover */
+.power-card {
+    background-color: #fff;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+     
 }
 
 /* Estilo para las imágenes de los héroes */
@@ -83,8 +125,8 @@ p {
 
 /* Estilo para las imágenes de los héroes */
 .team-image {
-    width: 150px;
-    height: auto;
+    width: 250px;
+    height: 150px;
     margin-right: 20px;
     border-radius: 8px;
     float: left;  /* Las imágenes flotan a la izquierda */
